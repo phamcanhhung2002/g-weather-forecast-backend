@@ -19,7 +19,7 @@ export const subscribe = async (req, res, next) => {
       .json({ errors: result.array() });
   }
 
-  const { email } = req.body;
+  const { email, location } = req.body;
 
   const token = jwt.sign({ email }, SECRET, { expiresIn: TOKEN_EXPIRE_TIME });
 
@@ -27,6 +27,7 @@ export const subscribe = async (req, res, next) => {
     const newEmail = new Email({
       email,
       token,
+      location,
     });
 
     await newEmail.save();

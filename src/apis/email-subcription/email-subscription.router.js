@@ -7,6 +7,7 @@ export const emailSubcriptionRouter = express.Router();
 emailSubcriptionRouter.post(
   "/subcribe/email",
   body("email").escape().trim().isEmail(),
+  body("location").notEmpty().escape().trim(),
   EmailSubscriptionService.subscribe
 );
 
@@ -14,7 +15,7 @@ emailSubcriptionRouter.get(
   "/unsubcribe/:email",
   param("email").escape().trim().isEmail(),
   EmailSubscriptionService.unsubcribe
-)
+);
 
 emailSubcriptionRouter.get(
   "/verify/:token",

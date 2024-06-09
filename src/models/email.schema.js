@@ -13,7 +13,10 @@ const emailSchema = new mongoose.Schema({
   },
   token: {
     type: "string",
-    index: true,
+  },
+  location: {
+    type: "string",
+    required: true,
   },
 });
 
