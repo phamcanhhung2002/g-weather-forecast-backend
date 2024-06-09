@@ -18,3 +18,15 @@ export const WEATHER_API = {
   FORECAST: "/forecast.json",
   KEY: process.env.WEATHER_API_KEY,
 };
+
+export const MONGODB_URI = process.env.MONGODB_URI;
+
+export const MAILER = {
+  HOST: process.env.MAIL_HOST,
+  USER: process.env.MAIL_USER,
+  PASS: process.env.MAIL_PASS,
+};
+
+export const SECRET = process.env.SECRET;
+
+export const TOKEN_EXPIRE_TIME = process.env.TOKEN_EXPIRE_TIME;
