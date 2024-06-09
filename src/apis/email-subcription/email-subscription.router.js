@@ -11,6 +11,12 @@ emailSubcriptionRouter.post(
 );
 
 emailSubcriptionRouter.get(
+  "/unsubcribe/:email",
+  param("email").escape().trim().isEmail(),
+  EmailSubscriptionService.unsubcribe
+)
+
+emailSubcriptionRouter.get(
   "/verify/:token",
   param("token").escape().trim(),
   EmailSubscriptionService.verify

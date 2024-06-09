@@ -99,3 +99,21 @@ export const verify = async (req, res, next) => {
     }
   });
 };
+
+export const unsubcribe = async (req, res, next) => {
+  const result = validationResult(req);
+
+  if (!result.isEmpty()) {
+    return res
+      .status(HttpStatusCode.BadRequest)
+      .json({ errors: result.array() });
+  }
+
+  const { email } = req.params;
+
+  await Email.deleteOne({
+    email,
+  });
+
+  return res.json({ message: "Email deleted." });
+};
