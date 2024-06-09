@@ -12,20 +12,24 @@ export const getWeather = async (req, res, next) => {
   }
 
   try {
-    const { q } = req.query;
+    const { q, days } = req.query;
 
-    const { data } = await axiosClient.get(WEATHER_API.CURRENT, {
+    const { data } = await axiosClient.get(WEATHER_API.FORECAST, {
       params: {
         q,
+        days,
       },
     });
 
     return res.json(data);
   } catch (err) {
-    const responseStatus = err?.response?.status;
-    if (responseStatus == 400) {
+    const statusCode = err?.response?.status;
+    const errorCode = err?.response?.data?.error?.code;
+
+    if (statusCode === 400 && errorCode === 1006) {
       return res.status(HttpStatusCode.BadRequest).json({
-        message: "You should input your city names or latitude and longitude!",
+        message:
+          "You should input your city names or latitude and longitude correctly!",
       });
     }
 

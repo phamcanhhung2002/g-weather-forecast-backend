@@ -8,10 +8,6 @@ export const CORS_OPTION = {
   origin: CLIENT_URL,
 };
 
-export const ROUTE_PREFIX = {
-  WEATHER: "weather",
-};
-
 export const API = {
   PREFIX: "/api",
   WEATHER: "/weather",
@@ -19,6 +15,6 @@ export const API = {
 
 export const WEATHER_API = {
   BASE_URL: "http://api.weatherapi.com/v1",
-  CURRENT: "/current.json",
+  FORECAST: "/forecast.json",
   KEY: process.env.WEATHER_API_KEY,
 };
