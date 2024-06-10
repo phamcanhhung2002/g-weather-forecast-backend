@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
-    "start": "pm2 start src/index.js src/daemons/subscription.daemon.js"
+    "start": "pm2 start src/index.js src/daemons/subscription.daemon.js --no-daemon"
   },
   "author": "",
   "license": "ISC",
