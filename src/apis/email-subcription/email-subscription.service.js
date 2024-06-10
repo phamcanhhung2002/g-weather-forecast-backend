@@ -37,7 +37,13 @@ export const subscribe = async (req, res, next) => {
       from: MAILER.USER,
       to: email,
       subject: "Confirm your email",
-      text: `Click in this link to confirm your mail: ${HOST}:${PORT}${API.PREFIX}/verify/${token}`,
+      context: {
+        host: HOST,
+        port: PORT,
+        apiPrefix: API.PREFIX,
+        token,
+      },
+      template: "confirm",
     });
 
     return res.json({
