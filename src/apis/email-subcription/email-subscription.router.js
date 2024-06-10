@@ -5,14 +5,14 @@ import * as EmailSubscriptionService from "./email-subscription.service.js";
 export const emailSubcriptionRouter = express.Router();
 
 emailSubcriptionRouter.post(
-  "/subcribe/email",
+  "/subscribe/email",
   body("email").escape().trim().isEmail(),
   body("location").notEmpty().escape().trim(),
   EmailSubscriptionService.subscribe
 );
 
 emailSubcriptionRouter.get(
-  "/unsubcribe/:email",
+  "/unsubscribe/:email",
   param("email").escape().trim().isEmail(),
   EmailSubscriptionService.unsubcribe
 );
