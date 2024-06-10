@@ -6,7 +6,6 @@ import {
   MAILER,
   SECRET,
   API,
-  PORT,
   HOST,
   TOKEN_EXPIRE_TIME,
 } from "../../constants/api.js";
@@ -39,7 +38,6 @@ export const subscribe = async (req, res, next) => {
       subject: "Confirm your email",
       context: {
         host: HOST,
-        port: PORT,
         apiPrefix: API.PREFIX,
         token,
       },
