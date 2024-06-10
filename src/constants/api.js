@@ -30,3 +30,5 @@ export const MAILER = {
 export const SECRET = process.env.SECRET;
 
 export const TOKEN_EXPIRE_TIME = process.env.TOKEN_EXPIRE_TIME;
+
+export const HOST = process.env.HOST;

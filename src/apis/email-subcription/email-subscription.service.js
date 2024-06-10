@@ -7,6 +7,7 @@ import {
   SECRET,
   API,
   PORT,
+  HOST,
   TOKEN_EXPIRE_TIME,
 } from "../../constants/api.js";
 import jwt from "jsonwebtoken";
@@ -36,7 +37,7 @@ export const subscribe = async (req, res, next) => {
       from: MAILER.USER,
       to: email,
       subject: "Confirm your email",
-      text: `Click in this link to confirm your mail: http://localhost:${PORT}${API.PREFIX}/verify/${token}`,
+      text: `Click in this link to confirm your mail: ${HOST}:${PORT}${API.PREFIX}/verify/${token}`,
     });
 
     return res.json({
