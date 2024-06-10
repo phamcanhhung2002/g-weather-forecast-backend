@@ -24,7 +24,7 @@ export const subscribe = async (req, res, next) => {
   const token = jwt.sign({ email }, SECRET, { expiresIn: TOKEN_EXPIRE_TIME });
 
   try {
-    const newEmail = new Email({
+    const newEmail = await Email.create({
       email,
       token,
       location,
@@ -89,11 +89,15 @@ export const verify = async (req, res, next) => {
     const { email } = decoded;
 
     try {
-      const verifiedEmail = await Email.findOne({
-        email,
-      });
-
-      (verifiedEmail.isVerified = true), (verifiedEmail.token = "");
+      const verifiedEmail = await Email.findOneAndUpdate(
+        {
+          email,
+        },
+        {
+          isVerified: true,
+          token: "",
+        }
+      );
 
       await verifiedEmail.save();
 

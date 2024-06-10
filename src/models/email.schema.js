@@ -4,7 +4,6 @@ const emailSchema = new mongoose.Schema({
   email: {
     type: "string",
     unique: true,
-    index: true,
     required: true,
   },
   isVerified: {
