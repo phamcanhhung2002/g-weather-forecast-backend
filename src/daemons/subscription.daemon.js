@@ -73,7 +73,9 @@ rule.tz = "Asia/Ho_Chi_Minh";
 schedule.scheduleJob(rule, async () => {
   try {
     console.log("Start to send weather forecast emails.");
-    const recipientEmails = await Email.find();
+    const recipientEmails = await Email.find({
+      isVerified: true,
+    });
     const promises = recipientEmails.map((email) =>
       sendWeatherForecastEmail(email.email, email.location)
     );

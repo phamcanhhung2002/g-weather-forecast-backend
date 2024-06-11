@@ -94,7 +94,6 @@ export const verify = async (req, res, next) => {
         },
         {
           isVerified: true,
-          token: "",
         }
       );
 
