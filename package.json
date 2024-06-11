@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
-    "start": "pm2 start src/index.js src/daemons/subscription.daemon.js"
+    "start": "pm2 start src/index.js src/daemons/subscription.daemon.js --no-daemon"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +21,7 @@
     "mongoose": "^8.4.1",
     "node-schedule": "^2.1.1",
     "nodemailer": "^6.9.13",
-    "pm2": "^5.4.0",
+    "nodemailer-express-handlebars": "^6.1.2",
     "query-string": "^9.0.0"
   }
 }

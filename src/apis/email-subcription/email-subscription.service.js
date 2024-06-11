@@ -6,7 +6,6 @@ import {
   MAILER,
   SECRET,
   API,
-  PORT,
   HOST,
   TOKEN_EXPIRE_TIME,
 } from "../../constants/api.js";
@@ -25,9 +24,8 @@ export const subscribe = async (req, res, next) => {
   const token = jwt.sign({ email }, SECRET, { expiresIn: TOKEN_EXPIRE_TIME });
 
   try {
-    const newEmail = new Email({
+    const newEmail = await Email.create({
       email,
-      token,
       location,
     });
 
@@ -37,7 +35,12 @@ export const subscribe = async (req, res, next) => {
       from: MAILER.USER,
       to: email,
       subject: "Confirm your email",
-      text: `Click in this link to confirm your mail: ${HOST}:${PORT}${API.PREFIX}/verify/${token}`,
+      context: {
+        host: HOST,
+        apiPrefix: API.PREFIX,
+        token,
+      },
+      template: "confirm",
     });
 
     return res.json({
@@ -85,11 +88,14 @@ export const verify = async (req, res, next) => {
     const { email } = decoded;
 
     try {
-      const verifiedEmail = await Email.findOne({
-        email,
-      });
-
-      (verifiedEmail.isVerified = true), (verifiedEmail.token = "");
+      const verifiedEmail = await Email.findOneAndUpdate(
+        {
+          email,
+        },
+        {
+          isVerified: true,
+        }
+      );
 
       await verifiedEmail.save();
 
