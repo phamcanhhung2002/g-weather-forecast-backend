@@ -26,7 +26,6 @@ export const subscribe = async (req, res, next) => {
   try {
     const newEmail = await Email.create({
       email,
-      token,
       location,
     });
 

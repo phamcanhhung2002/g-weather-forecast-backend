@@ -10,9 +10,6 @@ const emailSchema = new mongoose.Schema({
     type: "boolean",
     default: false,
   },
-  token: {
-    type: "string",
-  },
   location: {
     type: "string",
     required: true,
