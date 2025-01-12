@@ -31,7 +31,7 @@ export const subscribe = async (req, res, next) => {
 
     await newEmail.save();
 
-    await transporter.sendMail({
+    transporter.sendMail({
       from: MAILER.USER,
       to: email,
       subject: "Confirm your email",

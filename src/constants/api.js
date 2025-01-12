@@ -1,15 +1,15 @@
 import "dotenv/config";
 
-export const CLIENT_URL = process.env.CLIENT_URL;
+export const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN;
 
 export const PORT = process.env.PORT;
 
 export const CORS_OPTION = {
-  origin: CLIENT_URL,
+  origin: CLIENT_ORIGIN,
 };
 
 export const API = {
-  PREFIX: "/api",
+  PREFIX: "/api/v1",
   WEATHER: "/weather",
 };
 

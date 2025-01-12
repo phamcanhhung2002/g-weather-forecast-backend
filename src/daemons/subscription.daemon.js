@@ -52,7 +52,7 @@ const sendWeatherForecastEmail = async (email, q) => {
       },
     });
 
-    await transporter.sendMail({
+    transporter.sendMail({
       from: MAILER.USER,
       to: email,
       subject: "Your weather today",
